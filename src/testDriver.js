@@ -9,6 +9,8 @@ export function testProgram() {
   const todoList = new TodoList();
 
   const task1 = new TodoTask("doing laundry", format(new Date(2025, 6, 12), "MM/dd/yyyy"));
+
+  task1.setDescription("This is a test description!");
   const task2 = new TodoTask("assignment", format(new Date(2025, 6, 13), "MM/dd/yyyy"));
   const task3 = new TodoTask("oil change", format(new Date(2025, 6, 14), "MM/dd/yyyy"));
   const task4 = new TodoTask("vet appointment", format(new Date(2025, 6, 15), "MM/dd/yyyy"));
