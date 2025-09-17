@@ -1,3 +1,5 @@
-import { testFunction } from "./testing.js";
+import { testProgram } from "./testDriver";
 
-testFunction();
+testProgram();
+
+
