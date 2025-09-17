@@ -1,6 +1,7 @@
 import "./styles.css";
-import { testProgram } from "./testDriver";
+import initializeHomepage from "./homePage.js";
+import './Images/plus.png';
 
-testProgram();
+initializeHomepage();
 
 

@@ -1,3 +1,32 @@
 body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: lightcyan;
+}
+
+:root {
+  --primary-text-color: #2CB3CD;
+}
+
+.card {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 2rem;
+  max-width: 300px;
+  padding: 1rem;
+  color: var(--primary-text-color);
+  background-color: white;
+}
+
+
+
+.card:hover {
+  box-shadow: var(--primary-text-color) 0.2rem 0.2rem;
+}
+
+.card img {
+  width: 2em;
+  height: auto;
+  cursor: pointer;
 }
