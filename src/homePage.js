@@ -4,7 +4,7 @@ export default function initializeHomepage() {
 
   const mainContainer = document.querySelector("#content");
   const xIcon = document.getElementById("removeProject");
-
+  const dialog = document.querySelector("dialog");
   mainContainer.innerHTML = "";
 
 

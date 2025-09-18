@@ -8,6 +8,7 @@ export default function buttonHandler() {
   const closeButton = document.querySelector("#close-button");
   const submitButton = document.querySelector("#submitBtn");
   const projectNameInput = document.querySelector("#project-name-input");
+  const errorMsg = document.createElement("p");
 
   closeButton.addEventListener("click", () => {
     projectNameInput.value = "";
@@ -24,22 +25,50 @@ export default function buttonHandler() {
     if (projectListString) {
       projectListArr = JSON.parse(projectListString);
     }
-    const newProject = new Project(projectName, []);
-    projectListArr.push({
-      projectName: newProject.getProjectName(),
-      todoList: newProject.getTodoList(),
-    });
 
-    localStorage.setItem("projectList", JSON.stringify(projectListArr));
+    const duplication = projectListArr.some(
+      project => project.projectName === projectName
+    );
 
-    projectNameInput.value = "";
-    dialog.close();
+    const noName = projectName.trim() === "";
 
-    initializeHomepage();
+    if (duplication || noName) {
 
-  })
+      errorMsg.style.color = "red";
+      errorMsg.style.fontSize = "12";
+
+      if (duplication) {
+        errorMsg.textContent = "Cannot create duplicate projects";
+      }
+      else {
+        errorMsg.textContent = "Please input at least 1 character";
+      }
+      dialog.appendChild(errorMsg);
+      projectNameInput.value = "";
+      initializeHomepage();
+      return;
+    }
+
+    if (projectListArr) {
+      const newProject = new Project(projectName, []);
+      projectListArr.push({
+        projectName: newProject.getProjectName(),
+        todoList: newProject.getTodoList(),
+      });
+
+      localStorage.setItem("projectList", JSON.stringify(projectListArr));
+
+      projectNameInput.value = "";
+      dialog.close();
+
+      initializeHomepage();
+
+    }
+
+  });
 
   newProjectBtn.addEventListener("click", () => {
+    errorMsg.textContent = "";
     dialog.showModal();
   });
 
