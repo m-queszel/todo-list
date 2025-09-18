@@ -3,9 +3,13 @@ export default function initializeHomepage() {
 
 
   const mainContainer = document.querySelector("#content");
+  const xIcon = document.getElementById("removeProject");
+
   mainContainer.innerHTML = "";
 
+
   const sidebar = document.querySelector("#sidebar");
+  sidebar.innerHTML = "";
   const sidebarOptions = document.createElement("ul");
   sidebarOptions.setAttribute("class", "sidebarOptions");
   const sidebarToday = document.createElement("li");
@@ -43,6 +47,10 @@ export default function initializeHomepage() {
     const cardTitle = document.createElement("h2");
     cardTitle.textContent = project.projectName;
     card.appendChild(cardTitle);
+
+    const removeProject = xIcon.cloneNode(true);
+
+    card.appendChild(removeProject);
     projectContainer.appendChild(card);
   })
 
