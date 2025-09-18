@@ -26,9 +26,32 @@ body {
 
 .sidebar {
   background-color: white;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
   border-right: 1px solid var(--primary-text-color);
   grid-column: 1 / 2;
   grid-row: 2 / 4;
+}
+
+.sidebarOptions {
+  list-style-type: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.sidebarOptions li {
+  border: 1px solid black;
+  background-color: var(--primary-text-color);
+  color: white;
+  text-align: center;
+  padding: 0.2rem;
+  cursor: pointer;
+}
+
+.sidebarOptions li:hover {
+  box-shadow: black 0.05rem 0.05rem;
 }
 
 .header button {
@@ -47,7 +70,7 @@ body {
   justify-items: center;
   align-items: center;
   border: 1px solid black;
-  border-radius: 2rem;
+  border-radius: 1rem;
   max-width: 300px;
   padding: 1rem;
   color: var(--primary-text-color);

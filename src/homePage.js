@@ -6,6 +6,20 @@ export default function initializeHomepage() {
   mainContainer.innerHTML = "";
 
   const sidebar = document.querySelector("#sidebar");
+  const sidebarOptions = document.createElement("ul");
+  sidebarOptions.setAttribute("class", "sidebarOptions");
+  const sidebarToday = document.createElement("li");
+  sidebarToday.textContent = "Today";
+  const sidebarWeek = document.createElement("li");
+  sidebarWeek.textContent = "This Week"
+  const sidebarMonth = document.createElement("li");
+  sidebarMonth.textContent = "This Month";
+  sidebarOptions.textContent = "Projects Due:";
+  sidebarOptions.appendChild(sidebarToday);
+  sidebarOptions.appendChild(sidebarWeek);
+  sidebarOptions.appendChild(sidebarMonth);
+  sidebar.appendChild(sidebarOptions);
+
 
   const projectContainer = document.createElement("div");
 
