@@ -10,11 +10,30 @@ export default function buttonHandler() {
   const projectNameInput = document.querySelector("#project-name-input");
   const errorMsg = document.createElement("p");
   const projectEndDate = document.querySelector("#project-end-date");
+  const aboutPage = document.querySelector(".about");
+  const homePage = document.querySelector(".home");
+  const mainContainer = document.querySelector("#content");
+  const sidebar = document.querySelector(".sidebar");
+  const defaultCard = document.querySelector("#default-card");
 
   closeButton.addEventListener("click", () => {
     projectNameInput.value = "";
     dialog.close();
   })
+
+  aboutPage.addEventListener("click", () => {
+    mainContainer.innerHTML = "";
+    sidebar.innerHTML = "";
+  })
+
+  homePage.addEventListener("click", () => {
+    mainContainer.innerHTML = "";
+    initializeHomepage();
+    sidebar.appendChild(defaultCard);
+
+  })
+
+
 
   submitButton.addEventListener("click", (event) => {
     event.preventDefault();
@@ -34,16 +53,14 @@ export default function buttonHandler() {
     const noName = projectName.trim() === "";
 
     if (duplication || noName) {
-
+      if (errorMsg.parentNode) {
+        errorMsg.parentNode.removeChild(errorMsg);
+      }
       errorMsg.style.color = "red";
-      errorMsg.style.fontSize = "12";
-
-      if (duplication) {
-        errorMsg.textContent = "Cannot create duplicate projects";
-      }
-      else {
-        errorMsg.textContent = "Please input at least 1 character";
-      }
+      errorMsg.style.fontSize = "12px";
+      errorMsg.textContent = duplication
+        ? "Cannot create duplicate projects"
+        : "Please input at least 1 character";
       dialog.appendChild(errorMsg);
       projectNameInput.value = "";
       initializeHomepage();
@@ -85,4 +102,6 @@ export default function buttonHandler() {
       initializeHomepage();
     }
   });
+
+
 }

@@ -1,4 +1,3 @@
-
 export default function initializeHomepage() {
 
 
@@ -9,21 +8,6 @@ export default function initializeHomepage() {
 
 
   const sidebar = document.querySelector("#sidebar");
-  sidebar.innerHTML = "";
-  const sidebarOptions = document.createElement("ul");
-  sidebarOptions.setAttribute("class", "sidebarOptions");
-  const sidebarToday = document.createElement("li");
-  sidebarToday.textContent = "Today";
-  const sidebarWeek = document.createElement("li");
-  sidebarWeek.textContent = "This Week"
-  const sidebarMonth = document.createElement("li");
-  sidebarMonth.textContent = "This Month";
-  sidebarOptions.textContent = "Projects Due:";
-  sidebarOptions.appendChild(sidebarToday);
-  sidebarOptions.appendChild(sidebarWeek);
-  sidebarOptions.appendChild(sidebarMonth);
-  sidebar.appendChild(sidebarOptions);
-
 
   const projectContainer = document.createElement("div");
 
@@ -56,7 +40,10 @@ export default function initializeHomepage() {
     card.appendChild(removeProject);
     projectContainer.appendChild(card);
   })
-
+  const defaultCard = document.querySelector("#default-card");
+  if (defaultCard) {
+    sidebar.appendChild(defaultCard);
+  }
   mainContainer.appendChild(projectContainer);
 
 }
