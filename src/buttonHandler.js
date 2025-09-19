@@ -1,4 +1,5 @@
 import initializeHomepage from "./homePage";
+import initializeAboutPage from "./aboutPage";
 import Project from "./project";
 
 export default function buttonHandler() {
@@ -23,12 +24,13 @@ export default function buttonHandler() {
 
   aboutPage.addEventListener("click", () => {
     mainContainer.innerHTML = "";
-    sidebar.innerHTML = "";
+    initializeAboutPage();
   })
 
   homePage.addEventListener("click", () => {
     mainContainer.innerHTML = "";
     initializeHomepage();
+    sidebar.style.display = "";
     sidebar.appendChild(defaultCard);
 
   })

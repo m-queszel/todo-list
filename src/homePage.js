@@ -8,6 +8,7 @@ export default function initializeHomepage() {
 
 
   const sidebar = document.querySelector("#sidebar");
+  sidebar.style.borderRight = "1px solid var(--primary-text-color)";
 
   const projectContainer = document.createElement("div");
 
