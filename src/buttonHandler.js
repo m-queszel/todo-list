@@ -1,6 +1,7 @@
 import initializeHomepage from "./homePage";
 import initializeAboutPage from "./aboutPage";
 import Project from "./project";
+import confetti from "canvas-confetti";
 
 export default function buttonHandler() {
   const newProjectBtn = document.querySelector("#default-card");
@@ -16,6 +17,7 @@ export default function buttonHandler() {
   const mainContainer = document.querySelector("#content");
   const sidebar = document.querySelector(".sidebar");
   const defaultCard = document.querySelector("#default-card");
+  const completeProjectBtn = document.querySelector("#completeProject");
 
   closeButton.addEventListener("click", () => {
     projectNameInput.value = "";
@@ -34,7 +36,6 @@ export default function buttonHandler() {
     sidebar.appendChild(defaultCard);
 
   })
-
 
 
   submitButton.addEventListener("click", (event) => {
@@ -75,6 +76,7 @@ export default function buttonHandler() {
         projectName: newProject.getProjectName(),
         todoList: newProject.getTodoList(),
         projectDueDate: projectEndDate.value,
+        completed: false,
       });
 
       localStorage.setItem("projectList", JSON.stringify(projectListArr));
@@ -95,15 +97,49 @@ export default function buttonHandler() {
 
   document.querySelector("#content").addEventListener("click", (event) => {
     if (event.target.classList.contains("removeProject")) {
+      const card = event.target.closest('.card');
+      card.classList.add("shrink-remove");
 
+      card.addEventListener('animationend', () => {
+        card.remove();
+
+        const projectName = card.querySelector('h2').textContent;
+        let projectListArr = JSON.parse(localStorage.getItem('projectList'));
+        projectListArr = projectListArr.filter(project => project.projectName !== projectName);
+        localStorage.setItem('projectList', JSON.stringify(projectListArr));
+      },);
+    }
+  });
+
+  document.querySelector("#content").addEventListener("click", (event) => {
+    if (event.target.classList.contains("completeProject")) {
       const card = event.target.closest('.card');
       const projectName = card.querySelector('h2').textContent;
       let projectListArr = JSON.parse(localStorage.getItem('projectList'));
-      projectListArr = projectListArr.filter(project => project.projectName !== projectName);
+
+      projectListArr = projectListArr.map(project => {
+        if (project.projectName === projectName) {
+          return { ...project, completed: true };
+        }
+        return project;
+      });
       localStorage.setItem('projectList', JSON.stringify(projectListArr));
+      card.classList.add("completed");
+
+      blastConfetti();
       initializeHomepage();
     }
   });
 
+}
+
+function blastConfetti() {
+
+  confetti({
+    particleCount: 150,
+    origin: { x: 0.5, y: 1 },
+    spread: 180,
+    startVelocity: 45
+  });
 
 }

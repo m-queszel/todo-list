@@ -19,6 +19,7 @@
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
+    "canvas-confetti": "^1.9.3",
     "date-fns": "^4.1.0"
   }
 }
