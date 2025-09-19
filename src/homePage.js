@@ -45,6 +45,9 @@ export default function initializeHomepage() {
   if (defaultCard) {
     sidebar.appendChild(defaultCard);
   }
+  mainContainer.style.justifyItems = "";
+  mainContainer.style.gridRow = "2 / 4";
+  mainContainer.style.gridColumn = "2 / 4"
   mainContainer.appendChild(projectContainer);
 
 }

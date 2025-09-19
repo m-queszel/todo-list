@@ -3,7 +3,7 @@ import initializeAboutPage from "./aboutPage";
 import Project from "./project";
 
 export default function buttonHandler() {
-  const newProjectBtn = document.querySelector("#new-project");
+  const newProjectBtn = document.querySelector("#default-card");
   const removeProjectBtn = document.querySelector(".removeProject");
   const dialog = document.querySelector("dialog");
   const closeButton = document.querySelector("#close-button");

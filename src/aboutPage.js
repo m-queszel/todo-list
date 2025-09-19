@@ -13,6 +13,9 @@ export default function initializeAboutPage() {
   subContainer.appendChild(title);
   subContainer.appendChild(text);
 
+  mainContainer.style.justifyItems = "start";
+  mainContainer.style.gridColumn = "1 / 4";
+
   mainContainer.appendChild(subContainer);
 
 }
