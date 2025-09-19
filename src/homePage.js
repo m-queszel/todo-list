@@ -46,7 +46,10 @@ export default function initializeHomepage() {
     card.classList.add("card");
     const cardTitle = document.createElement("h2");
     cardTitle.textContent = project.projectName;
+    const cardDueDate = document.createElement("p");
+    cardDueDate.innerHTML = `Deadline: <b>${project.projectDueDate}</b>`;
     card.appendChild(cardTitle);
+    card.appendChild(cardDueDate);
 
     const removeProject = xIcon.cloneNode(true);
 

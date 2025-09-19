@@ -28,9 +28,13 @@
         <label for="project-name-input">Project Name:</label>
         <input type="text" id="project-name-input" name="project-name-input">
       </p>
+      <p>
+        <label for="project-end-date">Project Due Date:</label>
+        <input type="date" id="project-end-date" name="project-end-date" max="2050-12-31">
+      </p>
       <div>
         <button value="cancel" formmethod="dialog" id="close-button" type="button">Cancel</button>
-        <button id="submitBtn" value="default" type="submit">Submit</button>
+        <button id="submitBtn" value="default" type="submit project-end-date">Submit</button>
       </div>
     </form>
   </dialog>

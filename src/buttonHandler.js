@@ -9,6 +9,7 @@ export default function buttonHandler() {
   const submitButton = document.querySelector("#submitBtn");
   const projectNameInput = document.querySelector("#project-name-input");
   const errorMsg = document.createElement("p");
+  const projectEndDate = document.querySelector("#project-end-date");
 
   closeButton.addEventListener("click", () => {
     projectNameInput.value = "";
@@ -54,6 +55,7 @@ export default function buttonHandler() {
       projectListArr.push({
         projectName: newProject.getProjectName(),
         todoList: newProject.getTodoList(),
+        projectDueDate: projectEndDate.value,
       });
 
       localStorage.setItem("projectList", JSON.stringify(projectListArr));
